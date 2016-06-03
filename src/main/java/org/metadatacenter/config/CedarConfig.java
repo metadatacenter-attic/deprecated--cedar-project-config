@@ -7,6 +7,7 @@ import com.google.inject.Injector;
 import net.jmob.guice.conf.core.BindConfig;
 import net.jmob.guice.conf.core.ConfigurationModule;
 import net.jmob.guice.conf.core.InjectConfig;
+import org.metadatacenter.model.CedarNodeType;
 
 @BindConfig(value = "cedar")
 public class CedarConfig extends AbstractModule {
@@ -26,6 +27,12 @@ public class CedarConfig extends AbstractModule {
 
   @InjectConfig("linkedData")
   private LinkedDataConfig linkedDataConfig;
+
+  @InjectConfig("blueprintUserProfile")
+  private BlueprintUserProfile blueprintUserProfile;
+
+  @InjectConfig("blueprintUIPreferences")
+  private BlueprintUIPreferences blueprintUIPreferences;
 
   private static CedarConfig instance;
 
@@ -70,5 +77,21 @@ public class CedarConfig extends AbstractModule {
 
   public LinkedDataConfig getLinkedDataConfig() {
     return linkedDataConfig;
+  }
+
+  public BlueprintUserProfile getBlueprintUserProfile() {
+    return blueprintUserProfile;
+  }
+
+  public BlueprintUIPreferences getBlueprintUIPreferences() {
+    return blueprintUIPreferences;
+  }
+
+  public String getMongoCollectionName(CedarNodeType nt) {
+    return getMongoConfig().getCollections().get(nt.getValue());
+  }
+
+  public String getLinkedDataPrefix(CedarNodeType nodeType) {
+    return getLinkedDataConfig().getBase() + nodeType.getPrefix() + "/";
   }
 }
