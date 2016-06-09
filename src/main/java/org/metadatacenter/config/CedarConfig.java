@@ -9,6 +9,8 @@ import net.jmob.guice.conf.core.ConfigurationModule;
 import net.jmob.guice.conf.core.InjectConfig;
 import org.metadatacenter.model.CedarNodeType;
 
+import java.util.Map;
+
 @BindConfig(value = "cedar")
 public class CedarConfig extends AbstractModule {
 
@@ -33,6 +35,15 @@ public class CedarConfig extends AbstractModule {
 
   @InjectConfig("blueprintUIPreferences")
   private BlueprintUIPreferences blueprintUIPreferences;
+
+  @InjectConfig("elasticsearch")
+  private ElasticsearchConfig elasticsearchConfig;
+
+  @InjectConfig("servers")
+  private ServersConfig servers;
+
+  @InjectConfig("searchSettings")
+  private SearchSettings searchSettings;
 
   private static CedarConfig instance;
 
@@ -93,5 +104,17 @@ public class CedarConfig extends AbstractModule {
 
   public String getLinkedDataPrefix(CedarNodeType nodeType) {
     return getLinkedDataConfig().getBase() + nodeType.getPrefix() + "/";
+  }
+
+  public org.metadatacenter.config.ElasticsearchConfig getElasticsearchConfig() {
+    return elasticsearchConfig;
+  }
+
+  public ServersConfig getServers() {
+    return servers;
+  }
+
+  public SearchSettings getSearchSettings() {
+    return searchSettings;
   }
 }
