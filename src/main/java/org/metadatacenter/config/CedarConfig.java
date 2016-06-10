@@ -9,8 +9,6 @@ import net.jmob.guice.conf.core.ConfigurationModule;
 import net.jmob.guice.conf.core.InjectConfig;
 import org.metadatacenter.model.CedarNodeType;
 
-import java.util.Map;
-
 @BindConfig(value = "cedar")
 public class CedarConfig extends AbstractModule {
 
@@ -44,6 +42,9 @@ public class CedarConfig extends AbstractModule {
 
   @InjectConfig("searchSettings")
   private SearchSettings searchSettings;
+
+  @InjectConfig("importExport")
+  private ImportExportConfig importExportConfig;
 
   private static CedarConfig instance;
 
@@ -116,5 +117,9 @@ public class CedarConfig extends AbstractModule {
 
   public SearchSettings getSearchSettings() {
     return searchSettings;
+  }
+
+  public ImportExportConfig getImportExportConfig() {
+    return importExportConfig;
   }
 }
