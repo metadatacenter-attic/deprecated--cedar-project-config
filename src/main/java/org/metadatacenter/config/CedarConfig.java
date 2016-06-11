@@ -46,6 +46,12 @@ public class CedarConfig extends AbstractModule {
   @InjectConfig("importExport")
   private ImportExportConfig importExportConfig;
 
+  @InjectConfig("templateRESTAPI")
+  private TemplateRESTAPI templateRESTAPI;
+
+  @InjectConfig("templateRESTAPISummaries")
+  private TemplateRESTAPISummaries templateRESTAPISummaries;
+
   private static CedarConfig instance;
 
   static {
@@ -121,5 +127,13 @@ public class CedarConfig extends AbstractModule {
 
   public ImportExportConfig getImportExportConfig() {
     return importExportConfig;
+  }
+
+  public TemplateRESTAPI getTemplateRESTAPI() {
+    return templateRESTAPI;
+  }
+
+  public TemplateRESTAPISummaries getTemplateRESTAPISummaries() {
+    return templateRESTAPISummaries;
   }
 }
