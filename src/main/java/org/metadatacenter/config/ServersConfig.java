@@ -7,4 +7,6 @@ public interface ServersConfig {
   ServerConfig getFolder();
 
   UserServerConfig getUser();
+
+  ResourceServerConfig getResource();
 }
