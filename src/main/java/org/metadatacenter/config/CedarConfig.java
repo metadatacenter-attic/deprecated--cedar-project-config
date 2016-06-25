@@ -8,6 +8,7 @@ import net.jmob.guice.conf.core.BindConfig;
 import net.jmob.guice.conf.core.ConfigurationModule;
 import net.jmob.guice.conf.core.InjectConfig;
 import org.metadatacenter.model.CedarNodeType;
+import org.metadatacenter.server.jsonld.LinkedDataUtil;
 
 @BindConfig(value = "cedar")
 public class CedarConfig extends AbstractModule {
@@ -111,6 +112,10 @@ public class CedarConfig extends AbstractModule {
 
   public String getLinkedDataPrefix(CedarNodeType nodeType) {
     return getLinkedDataConfig().getBase() + nodeType.getPrefix() + "/";
+  }
+
+  public LinkedDataUtil getLinkedDataUtil() {
+    return new LinkedDataUtil(getLinkedDataConfig());
   }
 
   public org.metadatacenter.config.ElasticsearchConfig getElasticsearchConfig() {
