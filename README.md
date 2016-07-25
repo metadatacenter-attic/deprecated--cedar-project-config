@@ -1,2 +1,3 @@
 # CEDAR Project Config
-Global configuration for CEDAR microservices
+
+Deprecated. Merged into cedar-server-utils as a submodule.
